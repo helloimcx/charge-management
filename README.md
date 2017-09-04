@@ -30,7 +30,7 @@
 |account|string|账目项|2|
 |amount_receivable|double|应收金额|
 |paid_amount|double|已缴金额|
-|paidtime|datetime|时间|yyyy-mm-dd hr-mi-se|
+|paid_time|datetime|时间|yyyy-mm-dd hr-mi-se|
 |paid_status|boolean|状态|1|
 |count|int|账目项数量（通话时长/短信数量）|
 
