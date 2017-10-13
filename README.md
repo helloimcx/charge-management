@@ -15,7 +15,7 @@
 --
 | 字段 | 类型 | 说明 | 大小|
 | ---- | ---- | ---- | ----|
-|  phone |integer|手机号码|11|
+|  phone |String|手机号码|11|
 |balance|double|余额|
 |user_id|integer|用户id|
 
