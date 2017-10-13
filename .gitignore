@@ -100,6 +100,5 @@ ENV/
 .vscode
 .DS_Store
 
-
 .idea/
 migrations
