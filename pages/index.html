@@ -8,8 +8,8 @@
    <div class="jumbotron">
        <div class="container">
 
-           <h1>Welcome To the Site <i>{{request.user}}</i></h1>
-           <p>insert marketing copy here.</p>
+           <h1>欢迎来到收费管理系统</h1>
+           <p><i>{{request.user}}</i></p>
 
        </div>
    </div>
@@ -17,18 +17,10 @@
    <div class="container">
        <div class="row">
            <div class="col-md-6">
-               <h2>About</h2>
-               <p>{% lorem %}</p>
+
            </div>
            <div class="col-md-6">
-               <h2>Contact</h2>
-               <p>{% lorem %}</p>
-               <p>
-                   <a class="btn-default"
-                      href="/home/contact" role="button">
-                       Contact us >>
-                   </a>
-               </p>
+
            </div>
        </div>
    </div>
@@ -38,7 +30,7 @@
    <footer>
        <div class="container">
            <p>
-               &copy;Your Company {% now 'Y' %}
+               &copy;数据库课设 {% now 'Y' %}
            </p>
        </div>
    </footer>
