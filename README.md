@@ -1,4 +1,15 @@
-﻿# 通用数据类型 #
+﻿## 使用方法
+
+1. 自行安装docker
+2. 命令行下进入项目文件夹
+3. `docker-compose up`   下载镜像并启动项目
+4. `docker exec -it chargemanagement_web_1 /bin/bash` 进入web容器内部
+5. `python manage.py makemigrations`
+6. `python manage.py migrate`  根据模型建表
+
+#####  最后，浏览器地址栏输入`127.0.0.1:8000/home/index/`
+
+# 通用数据类型 #
 
 
 ---
