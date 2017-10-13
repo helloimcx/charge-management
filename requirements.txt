@@ -1,0 +1,6 @@
+Django
+mysqlclient
+django-compressor
+djangorestframework
+django-filter
+Markdown

@@ -1,0 +1,26 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_DATABASE=htapp
+      - MYSQL_ROOT_PASSWORD=htapp
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+    - 6061:80
+    links:
+    - db  
+
+  web:
+    build: .
+    command: python ./HT/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    links:
+      - db
