@@ -25,6 +25,7 @@ def user_pass_decorator(redirect_field_name='next', redirect_url=None):
         return wrap
     return decorator
 
+
 def required_login(function=None, redirect_field_name='next', redirect_url=None):
 
     actual_decorator = user_pass_decorator(
