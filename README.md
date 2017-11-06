@@ -1,6 +1,6 @@
 ﻿## 使用方法
 
-1. 自行安装docker
+1. 自行安装Docker
 2. 命令行下进入项目文件夹
 3. `docker-compose up`   下载镜像并启动项目
 4. `docker exec -it chargemanagement_web_1 /bin/bash` 进入web容器内部
@@ -8,6 +8,25 @@
 6. `python manage.py migrate`  根据模型建表
 
 #####  最后，浏览器地址栏输入`127.0.0.1:8000/home/index/`
+---
+
+### 使用 Windows 可能遇到的问题
+
+> 1. 自行安装Docker
+
+如果你的Windows版本无Hyper-V（比如Win10 家庭版），应下载Docker ToolBox
+
+> 3. `docker-compose up`   下载镜像并启动项目
+
+如果出现镜像下载缓慢甚至无法下载的问题，查看 C:/Users/USERNAME/.docker/ 是否有`daemon.json`文件，有则转到 `registry-mirrors`字段，添加一个国内的镜像源（比如 https://registry.docker-cn.com ）
+
+运行的时候如果出现`python: can't open file 'manage.py': [Errno 2] No such file or directory`，可转到`docker-compose.yml`文件，找到`web`,去掉`volumes`字段和相应值。
+
+> 最后，浏览器地址栏输入`127.0.0.1:8000/home/index/`
+
+由于在Windows容器是运行在VirtualBox的Linux虚拟机之上，不能使用127.0.0.1(localhost)访问容器，所以要使用Linux虚拟机的IP而不是Windows的IP。输入`docker-machine ip default` 查看容器所在的IP（一般是192.168.99.100）然后浏览器地址栏输入`XXX.XXX.XXX.XXX:8000/home/index/`
+
+---
 
 # 通用数据类型 #
 
