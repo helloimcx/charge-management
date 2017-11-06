@@ -19,15 +19,18 @@ def register(request):
         if phone is not False and pwd is not False:
             try:
                 Phone.create_phone(phone=phone, password=pwd)
-            except IntegrityError as ige:
+            except IntegrityError:
                 messages.add_message(request, messages.ERROR, "该手机号已注册！")
                 return render(request, 'Authentication/signup.html')
             except Exception as e:
                 messages.add_message(request, messages.ERROR, "请求出错！")
                 return render(request, 'Authentication/signup.html')
             else:
+                context = {
+                    "phone_number": phone
+                }
                 messages.add_message(request, messages.SUCCESS, "注册成功！")
-                return render(request, 'Authentication/login.html')
+                return render(request, 'Authentication/login.html', context)
         else:
             messages.add_message(request, messages.ERROR, "请求出错！")
             return render(request, 'Authentication/signup.html')
