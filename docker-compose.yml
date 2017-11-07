@@ -4,6 +4,8 @@ services:
     image: mysql
     expose:
       - "3306"
+    ports:
+      - 3306:3306
     environment:
       - MYSQL_DATABASE=htapp
       - MYSQL_ROOT_PASSWORD=htapp

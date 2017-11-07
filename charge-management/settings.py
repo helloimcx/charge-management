@@ -18,7 +18,7 @@ MYSQL_DB        = 'htapp'
 MYSQL_USER      = 'root'
 MYSQL_PASS      = 'htapp'
 MYSQL_HOST_M    = 'db'
-MYSQL_HOST_S    = '127.0.0.1'
+MYSQL_HOST_S    = '120.78.199.2'
 MYSQL_PORT      = '3306'
 
 
@@ -92,7 +92,7 @@ DATABASES = {
         'NAME':       MYSQL_DB,
         'USER'      : MYSQL_USER,
         'PASSWORD'  : MYSQL_PASS,
-        'HOST'      : MYSQL_HOST_M,
+        'HOST'      : MYSQL_HOST_S,
         'PORT'      : MYSQL_PORT,
     }
 }
