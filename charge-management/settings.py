@@ -48,7 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Authentication',
     'Home',
-
+    'BillQuerry',
+    'Charge',
+    'DataAnalyse',
+    'Payment',
+    'PaymentQuerry',
 ]
 
 MIDDLEWARE = [

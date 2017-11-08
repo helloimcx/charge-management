@@ -28,7 +28,7 @@ def contact(request):
         title = request.POST.get('title', None)
         content = request.POST.get('messages', None)
         Suggestions.objects.create(phone=phone, title=title, content=content)
-        messages.add_message(request, messages.SUCCESS, "发送成功！感谢您的建议，我们会尽快回复！")
+        messages.add_message(request, messages.SUCCESS, "发送成功！感谢您的建议，我们会尽快回复!")
         return render(request, 'Home/contact.html', context)
     else:
         return render(request, 'Home/contact.html', context)
