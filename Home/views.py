@@ -9,7 +9,9 @@ from .models import Suggestions
 def homepage(request):
     if is_login(request):
         phone_account = Phone.objects.get(phone=request.session[PHONE])
+        customer = phone_account.customer
         context = {
+            "customer": customer,
             "phone_account": phone_account
         }
         return render(request, 'Home/index.html', context)

@@ -1,19 +1,6 @@
 # coding: utf-8
 from .models import Phone
 from .utils.exceptions import LogInWithoutAuthentication
-import inspect
-import re
-import warnings
-
-from django.apps import apps as django_apps
-from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured, PermissionDenied
-from django.middleware.csrf import rotate_token
-from django.utils.crypto import constant_time_compare
-from django.utils.deprecation import RemovedInDjango21Warning
-from django.utils.module_loading import import_string
-from django.utils.translation import LANGUAGE_SESSION_KEY
-
 
 PHONE = 'auth_phone'
 
@@ -36,7 +23,7 @@ def authenticate(phone, password):
                 return phone_account, False
         except Phone.DoesNotExist:
             return None, 'DoesNotExist'
-        except  Exception as e:
+        except Exception as e:
             return None, str(e)
 
 

@@ -117,13 +117,13 @@
 /* 总共296.5 上66.6
 102 350.9*/
 .l_fee_big_include{
-	width: 490px;
+	width: 740px;
 	height: 297px;
 	position: relative;
 	float: left;
 }
 .l_fee_include{
-	width: 385.9px;
+	width: 635.9px;
 	height: 176.4px;
 	margin-left: 102px;
 	margin-top: 60.4px;
@@ -131,7 +131,7 @@
 }
 .f_fee_word{
 	padding-top: 12.2px;
-	padding-left: 69.5px;
+	padding-left: 0px;
 	font-size: 24.5px;
 	font-family: 微软雅黑;
 	color: #666666;
@@ -424,20 +424,26 @@
    <div class="swiper-slide">
        <div class="l_fee l_margintop">
 
-					<a href="yu_e.html">
+					<a href="#">
 						<div class="l_fee_big_include">
 							<div class="b_right l_fee_include">
-								<div class="f_fee_word">当前可用余额</div>
-								<div class="f_fee_number">42.42 <span style="font-size: 41px">元</span></div>
+								 <div class="f_fee_word">欢迎您</div>
+								<div class="f_fee_number">{{ phone_account.customer }}<span style="font-size: 41px">
+                                    {% if customer.customer_gender == '男' %}先生
+                                    {% elif customer.customer_gender == '女' %}女士
+                                    {% endif %}
+                                </span></div>
 							</div>
 						</div>
 					</a>
 
-					<a href="liulang.html">
+					<a href="#">
 						<div class="l_fee_big_include">
 							<div class="l_fee_include">
-								<div class="f_fee_word">欢迎您</div>
-								<div class="f_fee_number">13427519646<span style="font-size: 41px"></span></div>
+                                <div class="f_fee_word">当前可用余额</div>
+								<div class="f_fee_number">{{ phone_account.balance }}<span style="font-size: 41px">
+                                    {% if phone_account %}元{% endif %}
+                                </span></div>
 							</div>
 						</div>
 					</a>
