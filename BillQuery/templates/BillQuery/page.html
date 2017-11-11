@@ -223,43 +223,13 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
+    // A trailing comma is allowed in JS
+    // An empty list does work for jqGrid.
     var grid_data =
         [
-            {id: "1", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "2", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-            {id: "3", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-            {id: "4", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"},
-            {id: "5", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "6", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "7", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03"},
-            {id: "8", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-            {id: "9", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "10", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "11", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-            {id: "12", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-            {id: "13", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"},
-            {id: "14", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "15", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "16", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03"},
-            {id: "17", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-            {id: "18", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "19", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "20", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03"},
-            {id: "21", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03"},
-            {id: "22", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03"},
-            {id: "23", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03"}
-        ];
-
-    var subgrid_data =
-        [
-            {id: "1", name: "sub grid item 1", qty: 11},
-            {id: "2", name: "sub grid item 2", qty: 3},
-            {id: "3", name: "sub grid item 3", qty: 12},
-            {id: "4", name: "sub grid item 4", qty: 5},
-            {id: "5", name: "sub grid item 5", qty: 2},
-            {id: "6", name: "sub grid item 6", qty: 9},
-            {id: "7", name: "sub grid item 7", qty: 3},
-            {id: "8", name: "sub grid item 8", qty: 8}
+        {% for phone_obj in phone_collection %}
+            {id:{{ phone_obj.account_id }}, phone: {{ phone_obj.phone }}, balance:{{ phone_obj.balance }}, note:""},
+        {% endfor %}
         ];
 
     jQuery(function ($) {
@@ -300,70 +270,14 @@
 
 
         jQuery(grid_selector).jqGrid({
-            //direction: "rtl",
-
-            //subgrid options
-            subGrid: true,
-            //subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
-            //datatype: "xml",
-            subGridOptions: {
-                plusicon: "ace-icon fa fa-plus center bigger-110 blue",
-                minusicon: "ace-icon fa fa-minus center bigger-110 blue",
-                openicon: "ace-icon fa fa-chevron-right center orange"
-            },
-            //for this example we are using local data
-            subGridRowExpanded: function (subgridDivId, rowId) {
-                var subgridTableId = subgridDivId + "_t";
-                $("#" + subgridDivId).html("<table id='" + subgridTableId + "'></table>");
-                $("#" + subgridTableId).jqGrid({
-                    datatype: 'local',
-                    data: subgrid_data,
-                    colNames: ['No', 'Item Name', 'Qty'],
-                    colModel: [
-                        {name: 'id', width: 50},
-                        {name: 'name', width: 150},
-                        {name: 'qty', width: 50}
-                    ]
-                });
-            },
-
-
             data: grid_data,
             datatype: "local",
             height: 250,
-            colNames: [' ', 'ID', 'Last Sales', 'Name', 'Stock', 'Ship via', 'Notes'],
+            colNames: ['ID', 'Phone', 'Balance', 'Notes'],
             colModel: [
-                {
-                    name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
-                    formatter: 'actions',
-                    formatoptions: {
-                        keys: true,
-                        //delbutton: false,//disable delete button
-
-                        delOptions: {recreateForm: true, beforeShowForm: beforeDeleteCallback},
-                        //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-                    }
-                },
-                {name: 'id', index: 'id', width: 60, sorttype: "int", editable: true},
-                {name: 'sdate', index: 'sdate', width: 90, editable: true, sorttype: "date", unformat: pickDate},
-                {name: 'name', index: 'name', width: 150, editable: true, editoptions: {size: "20", maxlength: "30"}},
-                {
-                    name: 'stock',
-                    index: 'stock',
-                    width: 70,
-                    editable: true,
-                    edittype: "checkbox",
-                    editoptions: {value: "Yes:No"},
-                    unformat: aceSwitch
-                },
-                {
-                    name: 'ship',
-                    index: 'ship',
-                    width: 90,
-                    editable: true,
-                    edittype: "select",
-                    editoptions: {value: "FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX"}
-                },
+                {name: 'id', index: 'id', width: 40, sorttype: "int", editable: true},
+                {name: 'phone', index: 'phone', width: 90, sorttype: "int", editable: true},
+                {name: 'balance', index: 'phone', width: 90, sorttype: "int", editable: true},
                 {
                     name: 'note',
                     index: 'note',
@@ -376,7 +290,7 @@
             ],
 
             viewrecords: true,
-            rowNum: 10,//行数？
+            rowNum: 10,//Number of rows？
             rowList: [10, 20, 30],
             pager: pager_selector,
             altRows: true,
@@ -390,7 +304,6 @@
                 var table = this;
                 setTimeout(function () {
                     styleCheckbox(table);
-
                     updateActionIcons(table);
                     updatePagerIcons(table);
                     enableTooltips(table);
