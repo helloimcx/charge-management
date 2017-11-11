@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Authentication',
     'Home',
-    'BillQuerry',
+    'BillQuery',
     'Charge',
     'DataAnalyse',
     'Payment',
@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'charge-management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME':       MYSQL_DB,
         'USER'      : MYSQL_USER,
         'PASSWORD'  : MYSQL_PASS,
