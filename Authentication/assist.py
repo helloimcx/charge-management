@@ -1,18 +1,12 @@
 # coding: utf-8
-from .models import Phone
+from .models import Phone, Worker
 from .utils.exceptions import LogInWithoutAuthentication
 
 PHONE = 'auth_phone'
+WORKER = 'auth_worker'
 
 
 def authenticate(phone, password):
-    """
-    验证函数
-    :param phone: 用户的phone
-    :param password: 用户的password
-    :return: 用户不存在或其他异常返回(None，错误信息),用户存在且密码正确(user对象，True)， 密码错误则为(user对象， False)
-    """
-
     if phone is not None:
         try:
             phone_account = Phone.objects.get(phone=phone)
@@ -22,6 +16,20 @@ def authenticate(phone, password):
             else:
                 return phone_account, False
         except Phone.DoesNotExist:
+            return None, 'DoesNotExist'
+        except Exception as e:
+            return None, str(e)
+
+
+def authenticate_worker(worker_id, password):
+    if worker_id is not None:
+        try:
+            worker = Worker.objects.get(worker_id=worker_id)
+            if worker.password == password:
+                return worker, True
+            else:
+                return worker, False
+        except Worker.DoesNotExist:
             return None, 'DoesNotExist'
         except Exception as e:
             return None, str(e)
@@ -41,9 +49,24 @@ def login(request, phone_account):
     request.user = phone_account
 
 
+def login_worker(request, worker):
+    if WORKER in request.session:
+        request.session.flush()
+    else:
+        request.session.cycle_key()
+
+    request.session[WORKER] = worker.worker_id
+    worker.save()
+    request.user = worker
+
+
 def logout(request):
     request.session.flush()
 
 
 def is_login(request):
     return PHONE in request.session
+
+
+def is_login_work(request):
+    return WORKER in request.session

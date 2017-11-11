@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from .models import *
 from django.contrib import auth
-from .assist import authenticate, login, is_login
+from .assist import *
 from Authentication.utils.customerMaker import make_customer
 
 
@@ -50,26 +50,47 @@ def register(request):
 
 def sign_in(request):
     if request.method == 'POST':
-        phone = request.POST.get('phone', False)
-        pwd = request.POST.get('password', False)
-        phone_account, status = authenticate(phone, pwd)
-        try:
-            if phone_account is not None:
-                if status is False:
-                    messages.add_message(request, messages.ERROR, "密码错误！")
-                    return render(request, 'Authentication/login.html')
-                if phone_account.is_active:
-                    login(request, phone_account)
-                    next_url = request.GET.get('next', '/home/index')
-                    return HttpResponseRedirect(next_url)
+        account_type = request.POST.get('optionsRadiosinline', False)
+        if account_type == "customer":
+            phone = request.POST.get('accountID', False)
+            pwd = request.POST.get('password', False)
+            phone_account, status = authenticate(phone, pwd)
+            try:
+                if phone_account is not None:
+                    if status is False:
+                        messages.add_message(request, messages.ERROR, "密码错误！")
+                        return render(request, 'Authentication/login.html')
+                    if phone_account.is_active:
+                        login(request, phone_account)
+                        next_url = request.GET.get('next', '/home/index')
+                        return HttpResponseRedirect(next_url)
+                    else:
+                        messages.add_message(request, messages.ERROR, "该手机已停机！")
+                        return render(request, 'Authentication/login.html')
                 else:
-                    messages.add_message(request, messages.ERROR, "该手机已停机！")
+                    messages.add_message(request, messages.ERROR, "当前账号不存在！")
                     return render(request, 'Authentication/login.html')
-            else:
-                messages.add_message(request, messages.ERROR, "当前账号不存在！")
+            except:
+                print(traceback.format_exc())
+        else:
+            worker_id = request.POST.get('accountID', False)
+            password = request.POST.get('password', False)
+            worker, status = authenticate_worker(worker_id, password)
+            try:
+                if worker is not None:
+                    if status is False:
+                        messages.add_message(request, messages.ERROR, "密码错误！")
+                        return render(request, 'Authentication/login.html')
+                    else:
+                        login_worker(request, worker)
+                        next_url = request.GET.get('next', '/home/index_worker/')
+                        return HttpResponseRedirect(next_url)
+                else:
+                    messages.add_message(request, messages.ERROR, "当前账号不存在！")
+                    return render(request, 'Authentication/login.html')
+            except Exception:
+                messages.add_message(request, messages.ERROR, "求求出错！")
                 return render(request, 'Authentication/login.html')
-        except:
-            print(traceback.format_exc())
     else:
          if is_login(request):
             return HttpResponseRedirect('/home/index')

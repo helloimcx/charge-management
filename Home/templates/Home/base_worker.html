@@ -8,7 +8,7 @@
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .navbar-default {
+   .navbar-default {
   background-color: #2061c1;
   border-color: #327cc8;
 }
@@ -102,15 +102,14 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="#">收费管理系统</a>
+		<a class="navbar-brand" href="#">营业员端</a>
 	</div>
 	<div>
 		<ul class="nav navbar-nav">
-            <li class="active"><a href="/home/index"><span class="glyphicon glyphicon-home"></span>主页</a></li>
+            <li class="active"><a href="/home/index_worker/"><span class="glyphicon glyphicon-home"></span>主页</a></li>
             <li><a href="#">充值</a></li>
             <li><a href="#">账单</a></li>
             <li><a href="#">缴费查询</a></li>
-            <li><a href="/home/contact"><span class="glyphicon glyphicon-heart"></span>联系</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					下拉菜单
@@ -129,11 +128,10 @@
 		</ul>
 
          <ul class="nav navbar-nav navbar-right">
-             {% if phone_account %}
-                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ phone_account.phone }}</a></li>
+             {% if worker %}
+                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ worker.worker_name }}</a></li>
                  <li><a href="/authentication/logout"><span class="glyphicon glyphicon-log-out"></span> 退出登录</a></li>
              {% else %}
-                 <li><a href="/authentication/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
                  <li><a href="/authentication/?next={{request.path}}"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
              {% endif %}
         </ul>

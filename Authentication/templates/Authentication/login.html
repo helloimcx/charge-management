@@ -22,11 +22,19 @@
         </div>
         <div class="form-group">
             <label class="sr-only"  for="phone">Phone</label>
-            <input class="form-control" id="phone" type="number" placeholder="Phone number" name="phone" value="{{ phone_number }}" required autofocus>
+            <input class="form-control" id="phone" type="number" placeholder="电话号码/工号" name="accountID" value="{{ phone_number }}" required autofocus>
         </div>
         <div class="form-group">
             <label class="sr-only" for="password">Password</label>
-            <input class="form-control" id="password" type="password" placeholder="Password" name="password" required>
+            <input class="form-control" id="password" type="password" placeholder="密码" name="password" required>
+        </div>
+        <div class="form-group">
+           <label class="radio-inline">
+                <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="customer" checked>顾客
+           </label>
+            <label class="radio-inline">
+                <input type="radio" name="optionsRadiosinline" id="optionsRadios2"  value="worker">营业员
+            </label>
         </div>
         <div class="form-group">
             <input class="btn btn-lg btn-primary btn-block" id="signInBtn" type="submit" value="登录"/>

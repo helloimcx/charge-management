@@ -1,8 +1,8 @@
 from Authentication.decorators import required_login
 from django.shortcuts import render
 from django.contrib import messages
-from Authentication.assist import PHONE, is_login
-from Authentication.models import Phone
+from Authentication.assist import *
+from Authentication.models import Phone, Worker
 from .models import Suggestions
 
 
@@ -17,6 +17,17 @@ def homepage(request):
         return render(request, 'Home/index.html', context)
     else:
         return render(request, 'Home/index.html')
+
+
+def homepage_worker(request):
+    if is_login_work(request):
+        worker = Worker.objects.get(worker_id=request.session[WORKER])
+        context = {
+            "worker": worker,
+        }
+        return render(request, 'Home/index_worker.html', context)
+    else:
+        return render(request, 'Home/index_worker.html')
 
 
 @required_login
