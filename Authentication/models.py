@@ -41,10 +41,11 @@ class Phone (models.Model):
 
 class Hall(models.Model):
     hall_id = models.AutoField(primary_key=True)
-    hall_info = models.CharField(max_length=100, null=True)
+    hall_address = models.CharField(max_length=50, null=False)
+    hall_name = models.CharField(max_length=10, null=False)
 
     def __str__(self):
-        return self.hall_id
+        return self.hall_name
 
 
 class Worker(models.Model):

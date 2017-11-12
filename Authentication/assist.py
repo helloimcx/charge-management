@@ -70,3 +70,4 @@ def is_login(request):
 
 def is_login_work(request):
     return WORKER in request.session
+
