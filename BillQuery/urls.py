@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from . import views
+from .views import client_view
 
 urlpatterns = [
-    url(r'^$', views.stub, name='stub'),
+    url(r'^$', client_view, name='client_view'),
 ]

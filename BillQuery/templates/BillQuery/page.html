@@ -164,11 +164,7 @@
 
                 <div class="page-header">
                     <h1>
-                        jqGrid
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            Dynamic tables and grids using jqGrid plugin
-                        </small>
+                        {{ phone_number }}
                     </h1>
                 </div><!-- /.page-header -->
 
@@ -227,8 +223,15 @@
     // An empty list does work for jqGrid.
     var grid_data =
         [
-        {% for phone_obj in phone_collection %}
-            {id:{{ phone_obj.account_id }}, phone: {{ phone_obj.phone }}, balance:{{ phone_obj.balance }}, note:""},
+        {% for bill in bill_list %}
+            {
+                id:"{{ bill.id }}",
+                item_name:"{{ bill.item.name }}",
+                amount:"{{ bill.amount }}",
+                pay:"{{ bill.pay }}",
+                receive:"{{ bill.receive }}",
+                status:"{{ bill.status }}"
+            },
         {% endfor %}
         ];
 
@@ -273,20 +276,14 @@
             data: grid_data,
             datatype: "local",
             height: 250,
-            colNames: ['ID', 'Phone', 'Balance', 'Notes'],
+            colNames: ['ID', 'Item', 'Amount', 'Pay', 'Receive', 'Status'],
             colModel: [
-                {name: 'id', index: 'id', width: 40, sorttype: "int", editable: true},
-                {name: 'phone', index: 'phone', width: 90, sorttype: "int", editable: true},
-                {name: 'balance', index: 'phone', width: 90, sorttype: "int", editable: true},
-                {
-                    name: 'note',
-                    index: 'note',
-                    width: 150,
-                    sortable: false,
-                    editable: true,
-                    edittype: "textarea",
-                    editoptions: {rows: "2", cols: "10"}
-                }
+                {name: 'id', index: 'id', width: 20, sorttype: "int", editable: false},
+                {name: 'item_name',index: 'item_name', width: 20, editable: false},
+                {name: 'amount', index: 'amount', width: 20, sorttype: "int", editable: false},
+                {name: 'pay', index: 'pay', width: 20, sorttype: "float", editable: false},
+                {name: 'receive', index: 'receive', width: 20, sorttype: "float", editable: false},
+                {name: 'status', index: 'status', width: 20, sorttype: "int", editable: false}
             ],
 
             viewrecords: true,

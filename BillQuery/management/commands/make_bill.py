@@ -5,11 +5,12 @@ from Authentication.models import Phone
 
 import random
 
-BILL_NUM = 10
+BILL_NUM = 100
 STATUS = (0, 1)
 START_DATE = datetime.now()
 MAX_AMOUNT = 250
 MAX_DATE_SECONDS = 365 * 24 * 60 * 60
+PERCENT = (0, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0)
 
 
 class Command(BaseCommand):
@@ -22,11 +23,16 @@ class Command(BaseCommand):
             item = random.choice(ITEMS)
             phone = random.choice(PHONES)
 
-            amount = 1 if item.name == u'短信' else random.randint(1, MAX_AMOUNT)
-            receive = amount * item.price
-            status = random.choice(STATUS)
-            pay = receive if status == 1 else random.random() * receive
+            if item.name == u'短信':
+                amount = 1
+                receive = item.price
+                pay = random.choice((0,1)) * item.price
+            else:
+                amount = random.randint(1, MAX_AMOUNT)
+                receive = amount * item.price
+                pay = random.choice(PERCENT) * receive
 
+            status = 1 if pay == receive else 0
             time = START_DATE + timedelta(seconds=random.randint(0, MAX_DATE_SECONDS))
 
             Bill.objects.create(item=item, phone=phone,
