@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'layui/layui.all.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
+
+    <title>Title</title>
+
+</head>
+<body>
+<form class="layui-form layui-form-pane" action="{% url 'Payment:test' %}" method="post" id="form">
+    {% csrf_token %}
+  <div class="layui-form-item">
+    <label class="layui-form-label">手机号码：</label>
+    <div class="layui-input-block">
+      <input type="text" name="phone" required  lay-verify="required"  autocomplete="off" class="layui-input" readonly="readonly" value="电话号码" style="color:#01AAED;border:0;font-size:20px;" id="phone">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">充值金额：</label>
+    <div class="layui-input-inline">
+     <input type="text" name="money" required  lay-verify="required"  autocomplete="off" class="layui-input" readonly="readonly" value="充值金额" style="color:#01AAED;border:0;font-size:20px;" id="money">
+
+    </div>
+      <div class="layui-form-mid layui-word-aux">元</div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">支付渠道</label>
+    <div class="layui-input-block">
+      <select name="channel" lay-verify="required" >
+        <option value=""></option>
+        <option value="0">营业厅</option>
+        <option value="1">网上营业厅</option>
+        <option value="2">广州</option>
+        <option value="3">深圳</option>
+        <option value="4">杭州</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">支付方式</label>
+    <div class="layui-input-block" >
+      <input type="radio" name="way" value="支付宝" title="支付宝" checked >
+      <input type="radio" name="way" value="微信" title="微信" >
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-input-block" onclick="submit()">
+      <button class="layui-btn" lay-submit lay-filter="formDemo" >立即提交</button>
+    </div>
+  </div>
+
+</form>
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+
+  form.render();
+form.on('submit(formDemo)', function(data){
+
+
+
+
+  });
+
+
+});
+
+</script>
+</body>
+</html>

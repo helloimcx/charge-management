@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'charge-management.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME':       MYSQL_DB,
         'USER'      : MYSQL_USER,
         'PASSWORD'  : MYSQL_PASS,
