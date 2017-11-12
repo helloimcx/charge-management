@@ -5,17 +5,20 @@ from Authentication.models import Phone
 
 
 class Item(models.Model):
-    item_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     price = models.FloatField(default=0)
-    item = models.CharField(max_length=12)
+    name = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.name
 
 
 class Bill(models.Model):
-    bill_id = models.AutoField(primary_key=True)
-    status = models.IntegerField()
+    id = models.AutoField(primary_key=True)
+    status = models.IntegerField() # 1 表示已冲销，pay=receive.
     pay = models.FloatField(default=0)
     receive = models.FloatField(default=0)
     amount = models.FloatField(default=0)
     time = models.DateTimeField()
-    account_id = models.ForeignKey(Phone, null=False)
+    phone = models.ForeignKey(Phone, null=False)
     item = models.ForeignKey(Item, null=False)
