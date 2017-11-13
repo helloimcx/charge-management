@@ -9,6 +9,7 @@ from Authentication.decorators import required_login
 from django.contrib import messages
 import traceback
 from django.http import request
+from Payment.models import Payrecord,Channel
 
 # Create your views here.
 
@@ -61,13 +62,23 @@ def pay(request):
 
 
 def test(request):
-    channel = request.POST.get('channel', False)
+    channel = getchannel(request.POST.get('channel', False))
     way = request.POST.get('way', False)
     phone = request.POST.get('phone', False)
     money = request.POST.get('money', False)
     phone_account=Phone.objects.get(phone=phone)
-    
+    payrecord=Payrecord.objects.create(phone=phone_account,channel=channel,payrecord_way=way,payrecord_money=money)
+    try:
+        payrecord.save()
+
+    except:
+        return render(request, 'Payment/test.html')
 
 
-    return render(request,'Payment/test.html')
 
+
+def getchannel(index):
+    if index==0:
+        return Channel.objects.get(channel_name="营业厅")
+    if index==1:
+        return Channel.objects.get(channel_name="网上营业厅")

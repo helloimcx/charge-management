@@ -49,7 +49,7 @@ class Hall(models.Model):
 
 
 class Worker(models.Model):
-    worker_id = models.AutoField(primary_key=True)
+    worker_id=models.AutoField(primary_key=True)
     worker_name = models.CharField(max_length=12, null=False)
     hall = models.ForeignKey(Hall, null=False)
     password = models.CharField(max_length=255, null=False)

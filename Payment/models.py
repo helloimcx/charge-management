@@ -19,7 +19,7 @@ class Payrecord(models.Model):
     payrecord_money = models.IntegerField(null=False)
     payrecord_way =models.CharField(max_length=12,null=False)
     channel =models.ForeignKey(Channel,null=False)
-    worker=models.ForeignKey(Worker)
+    worker=models.ForeignKey(Worker,null=True)
     phone = models.ForeignKey(Phone, on_delete=models.CASCADE, null=False)
 
 
