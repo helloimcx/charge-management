@@ -4,7 +4,7 @@ from .utils.exceptions import EmptyPassword
 
 
 class Customer(models.Model):
-    customer_id = models.BigIntegerField(max_length=20, primary_key=True)
+    customer_id = models.BigIntegerField(primary_key=True)
     customer_name = models.CharField(max_length=12, null=False)
     customer_gender = models.CharField(default="男", max_length=5, null=False)
 
@@ -49,7 +49,7 @@ class Hall(models.Model):
 
 
 class Worker(models.Model):
-    worker_id=models.AutoField(primary_key=True)
+    worker_id = models.AutoField(primary_key=True)
     worker_name = models.CharField(max_length=12, null=False)
     hall = models.ForeignKey(Hall, null=False)
     password = models.CharField(max_length=255, null=False)

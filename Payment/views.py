@@ -10,6 +10,7 @@ from django.contrib import messages
 import traceback
 from django.http import request
 from Payment.models import Payrecord,Channel
+from Authentication.models import Phone,Customer
 
 # Create your views here.
 
@@ -17,10 +18,11 @@ from Payment.models import Payrecord,Channel
 def getPhone(phone):
     try:
         phone_account=Phone.objects.get(phone=phone);
-        return phone_account;
-    except:
-
+        return phone_account
+    except Phone.DoesNotExist:
         return None
+
+
 def payment(request):
 
     return render(request,"Payment/Payment.html")
@@ -39,7 +41,7 @@ def form(request):
 @csrf_exempt
 def confirmpay(request):
 
-    return  render(request,"Payment/form.html")
+     return  render(request,"Payment/form.html")
 
 
 
@@ -49,16 +51,20 @@ def confirmpay(request):
 @csrf_exempt
 def pay(request):
     if request.method == 'POST':
-     phone = request.POST.get('phone', False)
-     phone_account=getPhone(phone)
-
-     if phone_account is not None:
-        return_json = {'result': 1}
+        phone = request.POST.get('phone', False)
+        phone_account = getPhone(phone)
+    if phone_account is not None:
+        customer = Customer.objects.get(customer_id=phone_account.customer_id)
+        customername = customer.customer_name
+        string=str(customer.customer_id)
+        customerid=string.replace(string[5:14],"**********")
+        return_json = {'result': 1, 'customer_name': customername,'customer_id':customerid}
         return HttpResponse(json.dumps(return_json), content_type='application/json')
+    if phone_account is None :
+       return_json = {'result': 0}
+       return HttpResponse(json.dumps(return_json), content_type='application/json')
 
-     else:
-         return_json = {'result': 0}
-         return HttpResponse(json.dumps(return_json), content_type='application/json')
+
 
 
 def test(request):
@@ -67,18 +73,13 @@ def test(request):
     phone = request.POST.get('phone', False)
     money = request.POST.get('money', False)
     phone_account=Phone.objects.get(phone=phone)
-    payrecord=Payrecord.objects.create(phone=phone_account,channel=channel,payrecord_way=way,payrecord_money=money)
-    try:
-        payrecord.save()
-
-    except:
-        return render(request, 'Payment/test.html')
-
-
+    payrecord = Payrecord.objects.create(phone=phone_account,channel=channel,payrecord_way=way,payrecord_money=money)
+    payrecord.save()
+    return render(request, 'Payment/test.html')
 
 
 def getchannel(index):
-    if index==0:
+    if index=='0':
         return Channel.objects.get(channel_name="营业厅")
-    if index==1:
+    if index=='1':
         return Channel.objects.get(channel_name="网上营业厅")

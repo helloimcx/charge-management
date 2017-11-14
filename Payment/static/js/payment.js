@@ -89,24 +89,30 @@ function changeimg(imgid) {
               $.post("/home/pay/", {'phone': phone}, function (ret) {
 
                   var result = ret.result;
+                  var customername=ret.customer_name;
+                  var customerid=ret.customer_id;
                   if (result == 1) {
                       layer.open({
                           type: 2,
                           title: '确认充值订单',
                           maxmin: true,
                           shadeClose: true, //点击遮罩关闭层
-                          area: ['800px', '350px'],
+                          area: ['800px', '500px'],
                           content: '/home/form',
+						  success: function (layero, index) {
+                              var body = layer.getChildFrame('body', index);
+                              console.log(body.html());
+                              body.contents().find("#name").val(customername);
+                              body.contents().find("#id").val(customerid);
+
+                          },
 
 
                       });
                   }
                   else if (result == 0) {
 
-                      $("#message").html("<span  class=\"alert alert-warning\"> <a href=\"#\" class=\"close\" data-dismiss=\"alert\">\n" +
-                          "                                    &times;\n" +
-                          "                                 </a>\n" +
-                          "                                <strong>没有这个电话号码，请重新输入</strong></span>");
+                      layer.alert("hello")
                   }
               })
           }

@@ -3,4 +3,6 @@ window.onload=function () {
      $("#money").val(parent.$("#money").val());
     }
 
-
+$("#exit").click(function () {
+    layer.msg("hello")
+})
