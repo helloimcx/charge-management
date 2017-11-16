@@ -1,0 +1,118 @@
+{% include "Home/base.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<title>充值交费</title>
+	 <link rel="stylesheet" href="{% static 'css/others.css' %}">
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'layui/layui.all.js' %}"></script>
+    <script src="{% static 'js/payment.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'layui/css/modules/layer/default/layer.css' %}">
+
+</head>
+<body style="height: 100%">
+	<div class="l_top">
+		<a href="/home/index" target="_top">
+			<div class="f_back_icon">
+				<img src="{% static  'image/index_充值交费/返回首页.png'%}" alt="">
+			</div>
+		</a>
+		<!-- <div>
+			<span class="f_top" style="float: left;">< 首页</span>
+		</div> -->
+		<div>
+			<span class="f_top f_four_words">充值交费</span>
+		</div>
+	</div>
+
+	<div>
+		<div class="l_divde" style="border-bottom: solid 4px;border-color: #0087d8;">
+			<div class="f_divde">
+				<span>充值交费</span>
+			</div>
+		</div>
+
+		<div class="l_divde">
+			<div class="f_divde">
+				<span>充值卡充值</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="l_ad">
+		<img src="{% static  'image//index_充值交费/广告.png'%}"alt="">
+	</div>
+
+    {% csrf_token %}
+	<div class="l_fee_container">
+
+		<div class="l_fee_div l_fee_margin_bottom">
+			<div class="f_fee_number">
+
+				<input type="text" placeholder="请输入充值手机号码" id="phone_input" name="phone_number" onfocus="onfocus()" >
+			</div>
+
+			<div class="f_fee_icon">
+				<img src="{% static 'image/index_充值交费/icon.png' %}" alt="">
+			</div>
+		</div>
+
+
+
+		<div style="float: left;">
+			<div class="l_fee_margin_bottom l_fee_margin_right l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/01.png' %}" alt="" id="01" onclick="changeimg(01)" style="cursor: pointer">
+			</div>
+			<div class="l_fee_margin_bottom l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/02.png' %}" alt="" id="02" onclick="changeimg(02)"style="cursor: pointer">
+			</div>
+			
+			<div class="l_fee_margin_bottom l_fee_margin_right l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/03.png' %}" alt="" id="03" onclick="changeimg(03)"style="cursor: pointer">
+			</div>
+			<div class="l_fee_margin_bottom l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/04.png' %}" alt="" id="04"onclick="changeimg(04)"style="cursor: pointer">
+			</div>
+
+			<div class="l_fee_margin_bottom l_fee_margin_right l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/05.png' %}" alt="" id="05" onclick="changeimg(05)"style="cursor: pointer">
+			</div>
+			<div class="l_fee_margin_bottom l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/06.png' %}" alt="" id="06" onclick="changeimg(06)"style="cursor: pointer">
+			</div>
+
+			<div class="l_fee_margin_bottom l_fee_margin_right l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/07.png' %}" alt="" id="07" onclick="changeimg(07)"style="cursor: pointer">
+			</div>
+			<div class="l_fee_margin_bottom l_fee_img">
+				<img class="myimg" src="{% static 'image/index_充值交费/08.png' %}" alt="" id="08" onclick="changeimg(08)"style="cursor: pointer">
+			</div>
+		</div>
+
+		<div class=" l_fee_margin_bottom" style="float: left;">
+			<span class="f_fee_word l_fee_margin_bottom">支付金额：<span style="color: #0087d8" id="span1">0.00元</span></span>
+		</div>
+		<div class=" l_fee_margin_bottom" style="float: right;">
+			<span class="f_fee_word l_fee_margin_bottom">到账金额：<span style="color: #0087d8" id="span2">0.00元</span></span>
+		</div>
+
+<div class="l_fee_div l_fee_margin_bottom" style="background-color: #0087d8;float: left;">
+			<div style="margin-top: 8.7px;">
+				<span class="f_button_word" onclick="submit()" style="cursor: pointer">支付</span>
+			</div>
+		</div>
+
+
+
+
+		<div class=" l_fee_margin_bottom" style="float: right;">
+			<span class="f_fee_word" style="color: #0087d8">充值订单</span>
+		</div>
+    <input type="hidden" name="money" value="0" id="money">
+	</div>
+
+</body>
+</html>
+

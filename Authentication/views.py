@@ -89,7 +89,7 @@ def sign_in(request):
                     messages.add_message(request, messages.ERROR, "当前账号不存在！")
                     return render(request, 'Authentication/login.html')
             except Exception:
-                messages.add_message(request, messages.ERROR, "求求出错！")
+                messages.add_message(request, messages.ERROR, "请求出错！")
                 return render(request, 'Authentication/login.html')
     else:
          if is_login(request):

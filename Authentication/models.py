@@ -4,7 +4,7 @@ from .utils.exceptions import EmptyPassword
 
 
 class Customer(models.Model):
-    customer_id = models.BigIntegerField(max_length=20, primary_key=True)
+    customer_id = models.BigIntegerField(primary_key=True)
     customer_name = models.CharField(max_length=12, null=False)
     customer_gender = models.CharField(default="男", max_length=5, null=False)
 

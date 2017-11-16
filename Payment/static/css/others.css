@@ -1,0 +1,203 @@
+body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
+li, dl, dt, dd, form, a, fieldset, input, th, td{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+img{
+	transform-origin:  0% 0%;
+	transform:scale(1.36,1.36);
+}
+body{
+	background: #f5f5f5;
+	overflow: hidden;
+}
+
+.l_top{
+	width: 100%;
+	height: 130px;
+	background-color: #0087d8;
+}
+.f_top{
+	font-family: 微软雅黑;
+	padding-bottom: 37px;
+	padding-top: 37px;
+	font-size: 43px;
+	color: white;
+	float: left;
+}
+.f_four_words{
+	margin-left: 229px;
+}
+.f_two_words{
+	margin-left: 272px;
+}
+.f_back_icon{
+	margin: 46.5px;
+	float: left;
+}
+/* w82 h34 111.5 46.2  h41.8*/
+
+
+.l_divde{
+	height: 81.6px;
+	width: 490px;
+	background-color: white;
+	float: left;
+}
+.f_divde{
+	font-family: 微软雅黑;
+	font-size: 35.3px;
+	margin-left: 147.2px;
+	margin-top: 23.2px;
+	color: #0087d8;
+	width: 341.8px;
+	border-right: solid 1.4px;
+	border-color: #f1f1f1;
+}
+
+
+
+.l_ad{
+	width: 100%;
+	height: 157.8px;
+	float: left;
+}
+
+
+
+.l_fee_container{
+	margin-top: 68px;
+	margin-left: 89.7px;
+	margin-right: 89.7px;
+	margin-bottom: 54.4px;
+	float: left;
+}
+.l_fee_margin_right{
+	margin-right: 38px;
+}
+.l_fee_margin_bottom{
+	margin-bottom: 38px;
+}
+.l_fee_div{
+	width: 797px;
+	height: 68px;
+	border: solid 1px;
+	border-color: #eeeff0;
+	background-color: white;
+	border-radius: 12px;
+	float: left;
+}
+.f_fee_number{
+	margin-top: 10.5px;
+	margin-bottom: 10.5px;
+	margin-left: 32.6px;
+	font-size: 36px;
+	font-family: 微软雅黑;
+	color: #666666;
+	float: left;
+}
+.f_fee_icon{
+	float: right;
+	margin-right: 32.6px;
+	margin-top: 15.6px;
+	margin-bottom: 15.6px;
+}
+.f_fee_word{
+	font-size: 24.5px;
+	font-family: 微软雅黑;
+	color: #666666;
+}/* w30 h27 36.7  */
+.l_fee_img{
+	width: 380.8px;
+	height: 81.6px;
+	float: left;
+}
+/* w280 h60 380.8 81.6 */
+.f_button_word{
+	margin-right: 333.6px;
+	margin-left: 332.6px;
+	font-family: 微软雅黑;
+	font-size: 32.6px;
+	color: white;
+}
+/* 130.4 799.6 334.6*/
+
+
+.l_fee_or_liuliang{
+	width: 100%;
+	background-color: white;
+	float: left;
+}
+.f_chang_yong_liu_liang{
+	font-family: 微软雅黑;
+	font-size: 35.3px;
+	color: #898989;
+}
+.f_liu_liang_number{
+	font-family: 微软雅黑;
+	font-size: 81.6px;
+	color: #0087d8;
+	text-align: center;
+	width: 100%;
+}
+
+.l_ll_data{
+	margin-left: 55px;
+	margin-bottom: 55px;
+	margin-top: 55px;
+	margin-right: 0px;
+	width: 433px;
+	height: 225.8px;
+	float: left;
+}
+.b_r{
+	border-right: solid 2px;
+	border-color: #c1c1c1;
+}
+.f_ll_data{
+	font-family: 微软雅黑;
+	font-size: 24.5px;
+	color: #c1c1c1;
+	margin-bottom: 5px;
+	width: 350px;
+	margin-left: 70px;
+	float: left;
+}
+.f_ll_number{
+	font-family: 微软雅黑;
+	font-size: 49px;
+	color: #666666;
+	float: left;
+	margin-bottom: 25px;
+	width: 350px;
+	margin-left: 70px;
+}
+
+.l_ll_divde{
+	font-family: 微软雅黑;
+	font-size: 35px;
+	color: #666666;
+	padding: 20px;
+	float: left;
+}
+
+.l_ll_more_div{
+	background-color: white;
+	float: left;
+	height: 217.6px;
+}
+.l_ll_more{
+	width: 448px;
+	font-family: 微软雅黑;
+	font-size: 35px;
+	color: #666666;
+	float: left;
+	margin-top: 30px;
+	padding-bottom: 30px;
+	margin-left: 40px;
+}
+.l_ll_more_pic{
+	float: right;
+	margin-right: 40px;
+}
