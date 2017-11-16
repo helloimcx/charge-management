@@ -226,6 +226,7 @@
         {% for bill in bill_list %}
             {
                 id:"{{ bill.id }}",
+                time:"{{ bill.time|date:'Y-m-d H:i:s'  }}",
                 item_name:"{{ bill.item.name }}",
                 amount:"{{ bill.amount }}",
                 pay:"{{ bill.pay }}",
@@ -276,9 +277,11 @@
             data: grid_data,
             datatype: "local",
             height: 250,
-            colNames: ['ID', 'Item', 'Amount', 'Pay', 'Receive', 'Status'],
+            colNames: ['ID', 'Time', 'Item', 'Amount', 'Pay', 'Receive', 'Status'],
             colModel: [
                 {name: 'id', index: 'id', width: 20, sorttype: "int", editable: false},
+                {name: 'time', index: 'time', width:20, sorttype:"datetime",
+                    formatoptions: {srcformat: "Y-m-d H:i:s", newformat: "Y-m-d H:i:s"}},
                 {name: 'item_name',index: 'item_name', width: 20, editable: false},
                 {name: 'amount', index: 'amount', width: 20, sorttype: "int", editable: false},
                 {name: 'pay', index: 'pay', width: 20, sorttype: "float", editable: false},
