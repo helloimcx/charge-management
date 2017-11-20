@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 # Create your views here.
@@ -12,7 +11,6 @@ from .models import Bill
 @required_login
 def customer(request):
     phone_account = Phone.objects.get(phone=request.session[PHONE])
-    bill_collection = []
     context = {
         "phone_account": phone_account,
     }

@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>收费管理系统</title>
-
     {% block base_worker_top_css %}
     <!-- Bootstrap core CSS-->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -18,7 +17,6 @@
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
     {% endblock base_worker_top_css %}
-
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -50,7 +48,7 @@
                     <span class="nav-link-text">账单</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="缴费查询">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="缴费">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-money"></i>
                     <span class="nav-link-text">缴费</span>
@@ -62,11 +60,11 @@
                     <span class="nav-link-text">联系</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="报表统计">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="下拉菜单">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
                    data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-bar-chart"></i>
-                    <span class="nav-link-text">报表统计</span>
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">报表</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
@@ -86,9 +84,9 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            {% if phone_account %}
+            {% if worker %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-fw fa-user"></i>{{ phone_account.phone }}</a>
+                    <a class="nav-link" href="#"><i class="fa fa-fw fa-user"></i>{{ worker.worker_name }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal"
@@ -117,9 +115,10 @@
             </li>
             <li class="breadcrumb-item active">Blank Page</li>
         </ol>
-        <div class="row">
+        <div class="row  mx-auto">
             <div class="col-12">
                 {% block base_worker_body %}
+
                 {% endblock base_worker_body %}
             </div>
         </div>
@@ -167,4 +166,5 @@
 <script src="{% static 'js/sb-admin.min.js' %}"></script>
 {% endblock base_worker_bottom_js %}
 </body>
+
 </html>

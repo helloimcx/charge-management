@@ -1,32 +1,16 @@
 {% extends 'Home/base_worker.html' %}
 {% load staticfiles %}
-
-{% block base_worker_top_css %}
-    <!-- Bootstrap core CSS-->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- Custom fonts for this template-->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <!-- Page level plugin CSS-->
-    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
-{% endblock base_worker_top_css %}
-
 {% block base_worker_body %}
-    <h1>暂时没有东西</h1>
+    <!DOCTYPE html>
+    <html lang="en">
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img class="img" src="{% static 'images/server_woman.jpeg' %}">
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
 {% endblock base_worker_body %}
-
-{% block base_worker_bottom_js %}
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
-    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{% static 'js/sb-admin.min.js' %}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="{% static 'js/sb-admin-datatables.min.js' %}"></script>
-{% endblock base_worker_bottom_js %}
