@@ -139,8 +139,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, "assets"),
 SITE_PAGES_DIRECTORY=os.path.join(BASE_DIR,'pages')
 LOGIN_URL='/authentication/'
 SITE_OUTPUT_DIRECTORY=os.path.join(BASE_DIR,'_build')
 STATIC_ROOT=os.path.join(BASE_DIR,'_build','static')
+
 

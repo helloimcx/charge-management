@@ -14,9 +14,9 @@ def homepage(request):
             "customer": customer,
             "phone_account": phone_account
         }
-        return render(request, 'Home/index.html', context)
+        return render(request, 'Home/index_customer.html', context)
     else:
-        return render(request, 'Home/index.html')
+        return render(request, 'Home/index_customer.html')
 
 
 def homepage_worker(request):

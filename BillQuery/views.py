@@ -5,7 +5,21 @@ from django.http import HttpResponse
 # Create your views here.
 from Authentication.decorators import required_login
 from Authentication.models import Phone
-from Authentication import assist
+from Authentication.assist import PHONE
 from .models import Bill
+
+
+@required_login
+def customer(request):
+    phone_account = Phone.objects.get(phone=request.session[PHONE])
+    bill_collection = []
+    context = {
+        "phone_account": phone_account,
+    }
+    return render(request, 'BillQuery/customer.html', context)
+
+
+def workder(request):
+    pass
 
 

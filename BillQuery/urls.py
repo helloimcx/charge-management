@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from .views import client_view
+from .views import *
 
 urlpatterns = [
-    url(r'^$', client_view, name='client_view'),
+    url(r'^customer$', customer, name='customer'),
 ]
