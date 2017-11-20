@@ -32,6 +32,7 @@
     
     {% load staticfiles %}    
 
+
 2. 要覆盖 `base_customer_body` ，则以 {% block base_customer_body %} 和 {% endblock base_customer_body %} 包裹代码：
 
 ```
