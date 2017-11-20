@@ -1,0 +1,58 @@
+# 关于使用模板导航栏
+
+## 客户导航栏 
+
+0. 导航栏文件`base_worker.html`分三部分：
+> `base_worker_top_css`: 引用 css 文件
+> 
+> `base_worker_body`: 正文
+>
+> `base_worker_bottom_js`: 引用 js 文件
+>
+根据需要覆盖相应的部分，具体做法是将你的代码包裹在 ```{% block tag %} ... {% endblock tag %} ```。
+
+例如有一个网页 helloworld.html：
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>helloworld</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+    </html>
+    
+要应用导航栏，那么：
+
+1. 在html文件顶部添加：
+    
+    {% extends base_customer.html %}
+    
+    {% load staticfiles %}    
+
+2. 以 {% block base_worker_body %} 和 {% endblock base_worker_body %} 包裹代码：
+
+```
+{% extends base_customer.html %}
+{% load staticfiles %}  
+{% block base_worker_body %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img class="img" src="{% static 'images/server_woman.jpeg' %}">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock base_worker_body %}
+```
+    
+
+    
+    
