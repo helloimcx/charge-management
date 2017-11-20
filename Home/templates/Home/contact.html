@@ -1,4 +1,5 @@
-{% include "Home/base.html" %}
+{% extends "Home/base_customer.html" %}
+{% block base_customer_body %}
 
 {% load staticfiles %}
 <!DOCTYPE html>
@@ -38,21 +39,9 @@
                 {% endif %}
              </div>
          </form>
-         <div class="col-md-2 col-md-offset-2"></div>
-         <div class="col-md-4 col-md-offset-2">
-
-           <h2>收费管理系统</h2>
-           <address>
-               <strong>School Name</strong><br>
-               South China University Of Technology<br>
-               <strong>Team Members</strong><br>
-               <i>HZP, LZJ, JBG, MCX, WYQ, ZYW</i><br>
-               <strong>Address</strong><br>
-               Mega Center, Guangzhou<br>
-           </address>
-         </div>
        </div>
      </div>
 
 </body>
 </html>
+{% endblock base_customer_body %}

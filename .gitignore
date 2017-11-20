@@ -102,3 +102,6 @@ ENV/
 
 .idea/
 migrations
+/BillQuery/templates/BillQuery/jqgrid.html
+/BillQuery/templates/BillQuery/assets/
+/htapp

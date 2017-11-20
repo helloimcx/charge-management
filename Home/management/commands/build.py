@@ -51,6 +51,6 @@ class Command(BaseCommand):
                 output_dir=os.path.join(settings.SITE_OUTPUT_DIRECTORY,page)
                 if not os.path.exists(output_dir):
                     os.makedirs(output_dir)
-            with open(os.path.join(output_dir,'index.html'),'wb') as f:
+            with open(os.path.join(output_dir,'index_customer.html'),'wb') as f:
                 f.write(respon.content)
 

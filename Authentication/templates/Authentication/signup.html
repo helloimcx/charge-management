@@ -1,6 +1,5 @@
-{% include "Home/base.html" %}
-
-{% load staticfiles %}
+{% extends "Home/base_customer.html" %}
+{% block base_customer_body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +12,7 @@
 </head>
 
 <body>
-
 <div class="container">
-    <br><br><br>
     <form class="form-signup form-horizontal col-md-6 col-md-offset-3" id="signupform" action="{% url 'Authentication:register' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -80,3 +77,4 @@
 </div>
 </body>
 </html>
+{% endblock base_customer_body %}
