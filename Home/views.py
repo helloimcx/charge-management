@@ -47,5 +47,3 @@ def contact(request):
         return render(request, 'Home/contact.html', context)
 
 
-def helloworld(request):
-    return render(request, 'Home/helloworld.html')

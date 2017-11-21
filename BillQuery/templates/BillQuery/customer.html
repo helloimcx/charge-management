@@ -36,9 +36,7 @@
                     {% for bill in bill_collection %}
                         <tr>
                         <td>{{ bill.id }}</td>
-                        {% if bill.item.name == 'SMS' %}<td>短信</td>
-                        {% else %}<td>通话</td>
-                        {% endif %}
+                        <td>{{ bill.item.name }}</td>
                         <td>{{ bill.amount }}</td>
                         <td>{{ bill.pay }}</td>
                         <td>{{ bill.receive }}</td>
