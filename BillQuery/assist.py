@@ -1,6 +1,5 @@
 from .models import Bill, Item
 from Authentication.decorators import required_login
-from django.core.serializers import serialize
 
 
 @required_login
