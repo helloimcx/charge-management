@@ -1,6 +1,8 @@
 from django.conf.urls import url
-from .views import *
+from . import views
+from . import assist
 
 urlpatterns = [
-    url(r'^customer$', customer, name='customer'),
+    url(r'^customer$', views.customer, name='customer'),
+    url(r'^datatable/', assist.pager_query, name='datatable')
 ]

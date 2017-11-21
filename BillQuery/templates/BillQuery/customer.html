@@ -17,49 +17,14 @@
     <body>
     <!-- A customer's bill table begins here.-->
     <div class="card mb-3">
-        <div class="card-header"><i class="fa fa-table"></i>用户 {{ phone_account.phone }} 的账单</div>
+        <div class="card-header"><i class="fa fa-fw fa-table"></i>用户 {{ phone_account.phone }} 的账单</div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>流水号</th>
-                        <th>项目</th>
-                        <th>数量</th>
-                        <th>已缴费用</th>
-                        <th>应缴费用</th>
-                        <th>时间</th>
-                        <th>状态</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for bill in bill_collection %}
-                        <tr>
-                        <td>{{ bill.id }}</td>
-                        <td>{{ bill.item.name }}</td>
-                        <td>{{ bill.amount }}</td>
-                        <td>{{ bill.pay }}</td>
-                        <td>{{ bill.receive }}</td>
-                        <td>{{ bill.time|date:'Y-m-d H:i:s' }}</td>
-                        {% if bill.status == 1 %}<td>已缴清</td>
-                        {% else %}<td>未缴清</td>
-                        {% endif %}
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                <table class="table table-bordered" id="customer_bill_table" width="100%" cellspacing="0"></table>
             </div>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable({
-                "dom": '<"toolbar">frtip'
-            });
-            $("div.toolbar").html('<b>Custom tool bar! Text/images etc.</b>');
-        });
-    </script>
     </body>
     </html>
 {% endblock base_customer_body %}
@@ -74,6 +39,27 @@
     <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin.min.js' %}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="{% static 'js/sb-admin-datatables.min.js' %}"></script>
+    <script type="text/javascript">
+        var dataset = [
+        {% for bill in bill_collection %}
+            [
+                "{{ bill.id }}", "{{ bill.item.name }}", "{{ bill.amount }}", "{{ bill.pay }}", "{{ bill.receive }}", "{{ bill.time|date:'Y-m-d H:i:s' }}", "{% if bill.status == 1 %}已缴清{% else %}未缴清{% endif %}"
+            ],
+        {% endfor %}
+        ];
+        $(document).ready(function () {
+            $('#customer_bill_table').DataTable({
+                data: dataset,
+                columns: [
+                    {name: "bill_id", title:"流水号", orderable:true},
+                    {name: "bill_item__name", title:"项目", orderable:false},
+                    {name: "bill_amount", title:"数量", orderable:false},
+                    {name: "bill_pay", title:"已交金额", orderable:false},
+                    {name: "bill_receive", title:"应缴金额", orderable:false},
+                    {name: "bill_time", title:"时间", orderable:false},
+                    {name: "bill_status", title:"状态", orderable:false}
+                ]
+            });
+        });
+    </script>
 {% endblock base_customer_bottom_js %}
