@@ -41,15 +41,13 @@
 {% block base_customer_body %}
 <!DOCTYPE html>
 <html lang="en">
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <img class="img" src="{% static 'images/server_woman.jpeg' %}">
-        </div>
-    </div>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>helloworld</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
 </html>
 {% endblock base_customer_body %}
 ```
