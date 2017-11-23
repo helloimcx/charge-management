@@ -23,7 +23,7 @@
                 <table class="table table-bordered" id="customer_bill_table" width="100%" cellspacing="0"></table>
             </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Updated yesterday at 23:59:59 PM</div>
     </div>
     </body>
     </html>
@@ -43,7 +43,8 @@
         var dataset = [
         {% for bill in bill_collection %}
             [
-                "{{ bill.id }}", "{{ bill.item.name }}", "{{ bill.amount }}", "{{ bill.pay }}", "{{ bill.receive }}", "{{ bill.time|date:'Y-m-d H:i:s' }}", "{% if bill.status == 1 %}已缴清{% else %}未缴清{% endif %}"
+                "{{ bill.id }}", "{{ bill.item.name }}", "{{ bill.amount }}", "{{ bill.pay }}", "{{ bill.receive }}", "{{ bill.time }}", "{{ bill.status }}"
+                // \{\% if bill.status == 1 %}已缴清\{\% else %}未缴清\{\% endif %} Not working?
             ],
         {% endfor %}
         ];
@@ -51,14 +52,18 @@
             $('#customer_bill_table').DataTable({
                 data: dataset,
                 columns: [
-                    {name: "bill_id", title:"流水号", orderable:true},
-                    {name: "bill_item__name", title:"项目", orderable:false},
-                    {name: "bill_amount", title:"数量", orderable:false},
-                    {name: "bill_pay", title:"已交金额", orderable:false},
-                    {name: "bill_receive", title:"应缴金额", orderable:false},
-                    {name: "bill_time", title:"时间", orderable:false},
-                    {name: "bill_status", title:"状态", orderable:false}
-                ]
+                    {name: "bill_id", title:"流水号", type:"num"},
+                    {name: "bill_item__name", title:"项目", type:"string"},
+                    {name: "bill_amount", title:"数量", type:"num"},
+                    {name: "bill_pay", title:"已交金额", type:"num"},
+                    {name: "bill_receive", title:"应缴金额", type:"num"},
+                    {name: "bill_time", title:"时间", type:"date"},
+                    {name: "bill_status", title:"状态", type:"string"}
+                ],
+                // For server side processing
+                processing:true,
+                serverSide:true,
+                ajax:"{% url 'BillQuery:data-source' %}"
             });
         });
     </script>
