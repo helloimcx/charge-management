@@ -62,7 +62,7 @@ def sign_in(request):
                         return render(request, 'Authentication/login.html')
                     if phone_account.is_active:
                         login(request, phone_account)
-                        next_url = request.GET.get('next', '/home/index')
+                        next_url = request.GET.get('next', '/')
                         return HttpResponseRedirect(next_url)
                     else:
                         messages.add_message(request, messages.ERROR, "该手机已停机！")
@@ -83,7 +83,7 @@ def sign_in(request):
                         return render(request, 'Authentication/login.html')
                     else:
                         login_worker(request, worker)
-                        next_url = request.GET.get('next', '/home/index_worker/')
+                        next_url = request.GET.get('next', '/index_worker/')
                         return HttpResponseRedirect(next_url)
                 else:
                     messages.add_message(request, messages.ERROR, "当前账号不存在！")
@@ -93,13 +93,13 @@ def sign_in(request):
                 return render(request, 'Authentication/login.html')
     else:
          if is_login(request):
-            return HttpResponseRedirect('/home/index')
+            return HttpResponseRedirect('/')
          request.session['login_from'] = request.META.get('HTTP_REFERER', '/')
          return render(request, 'Authentication/login.html')
 
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect("/home/index")
+    return HttpResponseRedirect("/")
 
 

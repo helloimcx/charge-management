@@ -20,7 +20,7 @@ from django.contrib.auth import urls as auth_urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^authentication/', include('Authentication.urls', namespace='Authentication')),
-    url(r'^home/', include('Home.urls', namespace='Home')),
+    url(r'^', include('Home.urls', namespace='Home')),
     url(r'^bill/', include('BillQuery.urls', namespace='BillQuery')),
     url(r'^payment/', include('Payment.urls', namespace='Payment'))
 ]
