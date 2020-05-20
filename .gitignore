@@ -105,4 +105,5 @@ migrations
 /BillQuery/templates/BillQuery/jqgrid.html
 /BillQuery/templates/BillQuery/assets/
 /htapp
-/mysql
+
+mysql
